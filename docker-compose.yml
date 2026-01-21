@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Backend API + Blender
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: interior-design-backend
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - BLENDER_PATH=/usr/local/bin/blender
+      - BLENDER_SCRIPTS_DIR=/app/blender/scripts
+      - OUTPUT_DIR=/app/output
+      - SCENES_DIR=/app/scenes
+      - UPLOADS_DIR=/app/uploads
+      - ASSETS_DIR=/app/blender/assets
+    volumes:
+      - output_data:/app/output
+      - scenes_data:/app/scenes
+      - uploads_data:/app/uploads
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Nginx for frontend serving and API proxy
+  nginx:
+    image: nginx:alpine
+    container_name: interior-design-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./deploy/config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - output_data:/app/output:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  output_data:
+  scenes_data:
+  uploads_data:

@@ -1,0 +1,214 @@
+# ============================================================================
+# ENVIRONMENT FILES - Exclude from all directories
+# ============================================================================
+# Main environment files
+.env
+.env.local
+.env.*.local
+
+# Environment files in any subdirectory
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Keep example files (templates)
+!.env.example
+!**/.env.example
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+**/venv/
+**/ENV/
+**/env/
+**/.venv/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# ============================================================================
+# NODE.JS (if frontend uses npm)
+# ============================================================================
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
+
+# ============================================================================
+# OUTPUT DIRECTORIES
+# ============================================================================
+# Generated 3D models and scenes
+output/
+**/output/
+scenes/
+**/scenes/
+uploads/
+**/uploads/
+
+# GLB files (except asset library)
+*.glb
+!blender/assets/**/*.glb
+!blender/assets/models/**/*.glb
+
+# Temporary processing files
+*.blend1
+*.blend2
+**/tmp/
+temp/
+**/temp/
+
+# ============================================================================
+# LOGS
+# ============================================================================
+*.log
+logs/
+**/logs/
+*.log.*
+
+# ============================================================================
+# IDE / EDITORS
+# ============================================================================
+# VSCode
+.vscode/
+**/.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+**/.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.swp
+.*.swo
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================================================
+# OS FILES
+# ============================================================================
+# macOS
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ============================================================================
+# DOCKER
+# ============================================================================
+.docker/
+**/.docker/
+docker-compose.override.yml
+
+# ============================================================================
+# DEPLOYMENT
+# ============================================================================
+# SSH keys
+*.pem
+*.key
+!*.pub
+
+# Secrets
+secrets/
+**/secrets/
+*.secret
+
+# ============================================================================
+# TEMPORARY FILES
+# ============================================================================
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# ============================================================================
+# PROJECT SPECIFIC
+# ============================================================================
+# Session data
+sessions/
+**/sessions/
+
+# Cache directories
+.cache/
+**/.cache/
+
+# Database files (if any)
+*.db
+*.sqlite
+*.sqlite3
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/

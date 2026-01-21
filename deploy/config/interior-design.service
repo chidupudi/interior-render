@@ -1,0 +1,22 @@
+[Unit]
+Description=Interior Design System Backend
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/app/interior-design/backend
+Environment="PATH=/app/interior-design/backend/venv/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="GEMINI_API_KEY="
+Environment="BLENDER_PATH=/usr/local/bin/blender"
+Environment="BLENDER_SCRIPTS_DIR=/app/interior-design/blender/scripts"
+Environment="OUTPUT_DIR=/app/interior-design/output"
+Environment="SCENES_DIR=/app/interior-design/scenes"
+Environment="UPLOADS_DIR=/app/interior-design/uploads"
+Environment="ASSETS_DIR=/app/interior-design/blender/assets"
+ExecStart=/app/interior-design/backend/venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
